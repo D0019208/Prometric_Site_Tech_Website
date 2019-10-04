@@ -1,0 +1,31 @@
+[{
+        "resourceIds": ["1", "2"],
+        "title": "Site 7942 - In progress",
+        "start": "2019-06-21",
+        "end": "2019-06-26",
+        "color": "#0f52ba"
+    }, {
+        "resourceId": "2",
+        "title": "Site 4904 - Not Started",
+        "start": "2019-06-11T12:00:00+00:00",
+        "end": "2019-06-26T06:00:00+00:00",
+        "color": "#cccccc"
+    }, {
+        "resourceId": "3",
+        "title": "Site 6024 - Complete",
+        "start": "2019-06-13",
+        "end": "2019-06-27",
+        "color": "#5cb85c"
+    }, {
+        "resourceId": "4",
+        "title": "UAS 4562 Updated",
+        "start": "2019-06-12T10:00:00+00:00",
+        "end": "2019-06-27T15:00:00+00:00",
+        "color": "#5cb85c"
+    }, {
+        "resourceId": "5",
+        "title": "Assign Disk Space",
+        "start": "2019-06-12T09:00:00+00:00",
+        "end": "2019-06-26T14:00:00+00:00",
+        "color": "#ff99e6"
+    }]
