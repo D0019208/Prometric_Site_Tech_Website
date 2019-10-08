@@ -267,10 +267,10 @@ function sendEmail($email, $subject, $body, $successResponse) {
         //Server settings
         $mail->SMTPDebug = 0;                                 // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'Smtp.sendgrid.net';  // Specify main and backup SMTP servers
+        $mail->Host = '________';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'D00192082';                 // SMTP username
-        $mail->Password = '3820065Np2!';                           // SMTP password
+        $mail->Username = '______';                 // SMTP username
+        $mail->Password = '_______';                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
         //Recipients
