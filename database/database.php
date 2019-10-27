@@ -1,13 +1,13 @@
 <?php
 
 $dsn = "mysql:host=mysql-d00192082.alwaysdata.net;dbname=d00192082_sitetechwebsite";
-$username = "d00192082";
-$password = "3820065Np2";
+$username = "___________";
+$password = "___________";
 //$siteName = "http://localhost/SiteTechWebsite";
-$siteName = "d00192082.alwaysdata.net/";
-$ftp_host = 'ftp-d00192082.alwaysdata.net'; /* host */
-$ftp_user_name = 'd00192082_connect'; /* username */
-$ftp_user_pass = '3820065Np2'; /* password */
+$siteName = "___________";
+$ftp_host = '___________'; /* host */
+$ftp_user_name = '___________'; /* username */
+$ftp_user_pass = '___________'; /* password */
 
 try {
     $db = new PDO($dsn, $username, $password);
