@@ -29,9 +29,18 @@ $primaryCategory = $categories[0];
 $secondaryCategory = '%' . $categories[1] . '%';
 
 //Turn object to Array
+// Array (  
+//      [0] => Array ( [recid] => 8 [XenServerInstallationComplete] => 1 )
+//  )
 $changes = json_decode(json_encode($changesObject), True);
 
 //Other variables
+//This is the assoc array that will contain the structure of the checklist with the ID's of each induvidual task.
+//Array ( 
+//    [0] => Array ( [ITQuotesRecID] => 13828 [S001MigrationRecID] => 13829 [XenServerRecID] => 13832 [S001BuilRecID] => 13830 ) 
+//    [1] => Array ( [ITQuotesRecID] => null [S001MigrationRecID] => null [XenServerRecID] => 13833 [S001BuilRecID] => 13831 )
+// ....
+//      )
 $recIDArray = array();
 $recIDInsideArray;
 $iterator;
@@ -112,9 +121,32 @@ $categoriesArray["S001BuilRecID"] = "S001BuildConfigurationComplete";
 
 $changedCount = count($changes);
 
+//Loop through the changes array
+//$changes
+// Array (  
+//      [0](key) => Array ( [recid] => 8 [XenServerInstallationComplete] => 1 ) (value)
+//  )
 foreach ($changes as $key => &$value) {
+    // Access the value of the changes array
+    // $changes
+    // Array ( 
+    //    [recid]<--(innerChangesKey) => 8<--(innerChangesValue) [XenServerInstallationComplete] => 1 (boolean) 
+    // )
     foreach ($changes[$key] as $innerChangesKey => $innerChangesValue) {
         if ($innerChangesKey !== "recid") {
+            //  $categoriesArray
+            //  Array ( 
+            //      [ITQuotesRecID]<--(categoriesKey) => ITQuotesComplete<--(categoriesValue)    
+            //      [S001MigrationRecID] => S001MigrationComplete
+            //      [XenServerRecID] => XenServerInstallationComplete
+            //      [S001BuilRecID] => S001BuildConfigurationComplete
+            //  )
+            // Here we loop through the categories array and we check to see what category the changed object belongs to
+            // and if the task has been completed or not. If it has been completed we update the database and remove the
+            // object as we do not need it anymore.
+            //
+            // If the task was NOT completed e.g. a completed task unchecked, we update the database and state that the task
+            // has not been completed. Afterwards, we again remove the object as we do not need it anymore.
             foreach ($categoriesArray as $categoriesKey => $categoriesValue) {
                 if ($innerChangesKey === $categoriesValue && $value[$categoriesValue] === true) {
                     $query = "UPDATE checklist_checklistTasks SET taskCompleted = 'true' WHERE ID = :ID";
